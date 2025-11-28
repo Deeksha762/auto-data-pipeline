@@ -1,5 +1,10 @@
 FROM python:3.10-slim
 WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy everything, including data folder
 COPY . .
-RUN pip install -r requirements.txt
-CMD ["python", "scripts/clean.py"]
+
+# OR explicitly copy data
+# COPY data/ data/
